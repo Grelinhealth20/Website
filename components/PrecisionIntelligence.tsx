@@ -35,68 +35,68 @@ export default function PrecisionIntelligence() {
 
   return (
     <section
-      className="relative w-full overflow-hidden px-4 py-16 sm:px-6 sm:py-24
+      className="relative w-full overflow-hidden px-3 py-20 sm:px-5 sm:py-28 md:py-32 lg:py-40
         bg-[linear-gradient(225deg,#0A1F44_0%,#174EA6_38%,#3B82F6_70%,#93C5FD_100%)]"
     >
       {/* Stripe texture */}
       <SPattern />
 
-      {/* Inner glass panel — centered, constrained */}
+      {/* Inner glass panel — expanded, more generous spacing */}
       <div
-        className="relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px]
-          border border-white/20 px-5 py-10 sm:px-10 sm:py-14
-          shadow-[0_20px_60px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.45),inset_0_0_24px_rgba(255,255,255,0.12)]"
-        style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
+        className="relative mx-auto w-full overflow-hidden rounded-[32px] md:rounded-[40px]
+          border border-white/25 px-6 py-14 sm:px-12 sm:py-18 md:px-16 md:py-24 lg:px-20 lg:py-28
+          shadow-[0_30px_80px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.5),inset_0_0_40px_rgba(255,255,255,0.15)]"
+        style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}
       >
-        {/* Soft top glow */}
+        {/* Soft top glow — larger */}
         <div
           aria-hidden
-          className="pointer-events-none absolute right-0 top-0 z-0 h-full w-3/5"
-          style={{ background: "radial-gradient(ellipse at 88% 8%, rgba(120,170,250,0.25) 0%, transparent 58%)" }}
+          className="pointer-events-none absolute right-0 top-0 z-0 h-full w-2/3"
+          style={{ background: "radial-gradient(ellipse at 88% 8%, rgba(120,170,250,0.35) 0%, transparent 65%)" }}
         />
 
-        {/* Header — centered */}
-        <div className="relative z-10 mx-auto mb-10 flex max-w-2xl flex-col items-center text-center sm:mb-14">
+        {/* Header — centered with more breathing room */}
+        <div className="relative z-10 mx-auto mb-16 md:mb-20 flex max-w-3xl flex-col items-center text-center">
           <span
-            className="mb-4 rounded-full border border-white/30 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur"
+            className="mb-5 rounded-full border border-white/40 bg-white/12 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/85 backdrop-blur"
           >
             The Grelin Edge
           </span>
           <h2
-            className="text-[2.4rem] font-semibold leading-[1.02] tracking-[-0.025em] text-white sm:text-[3.25rem] md:text-[3.75rem]"
+            className="text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[3.5rem] md:text-[4.2rem] lg:text-5xl"
           >
             Precision Intelligence.
           </h2>
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/75 sm:text-base">
+          <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-white/80 sm:text-lg">
             Four capabilities working as one engine — monitoring, verifying, and scoring every claim in both directions.
           </p>
         </div>
 
-        {/* 4-card grid — centered, equal sizing */}
-        <div className="relative z-10 mx-auto grid max-w-[1120px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {/* 4-card grid — larger cards with better spacing */}
+        <div className="relative z-10 mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
-              initial={reduce ? false : { opacity: 0, y: 22 }}
+              initial={reduce ? false : { opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={reduce ? undefined : { y: -6 }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white
-                shadow-[0_8px_28px_rgba(0,0,0,0.18)] transition-shadow hover:shadow-[0_16px_40px_rgba(0,0,0,0.28)]"
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={reduce ? undefined : { y: -8, boxShadow: "0 24px 56px rgba(0,0,0,0.35)" }}
+              className="group flex flex-col overflow-hidden rounded-[24px] md:rounded-[28px] border border-white/20 bg-white
+                shadow-[0_12px_40px_rgba(0,0,0,0.22)] transition-all duration-300 hover:border-white/40"
             >
-              {/* Image panel — uniform aspect */}
-              <div className="aspect-[4/3] w-full overflow-hidden bg-[#EEF3FB] p-3">
+              {/* Image panel — larger aspect ratio */}
+              <div className="aspect-[5/4] w-full overflow-hidden bg-gradient-to-br from-[#EEF3FB] to-[#E3ECFD] p-4">
                 <img
                   src={card.img.src}
                   alt={card.title}
-                  className="h-full w-full rounded-lg object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="h-full w-full rounded-[18px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.06]"
                 />
               </div>
-              {/* Text */}
-              <div className="flex flex-1 flex-col px-5 pb-6 pt-4">
-                <h3 className="text-[15.5px] font-bold leading-snug text-[#0E1B33]">{card.title}</h3>
-                <p className="mt-2 text-[13px] leading-[1.6] text-[#5B6B82]">{card.description}</p>
+              {/* Text — more spacious */}
+              <div className="flex flex-1 flex-col px-6 pb-7 pt-5">
+                <h3 className="text-[17px] md:text-[18px] font-bold leading-snug text-[#0E1B33]">{card.title}</h3>
+                <p className="mt-3 text-[14px] leading-[1.65] text-[#5B6B82]">{card.description}</p>
               </div>
             </motion.div>
           ))}
