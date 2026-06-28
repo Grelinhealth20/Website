@@ -147,7 +147,7 @@ const RxAiCard = ({ showBody = true }: { showBody?: boolean }) => (
     </div>
     {showBody && (
       <div className="bg-white border-t border-[rgba(20,33,61,0.07)] px-4 py-3.5">
-        <CardTag>Prescription AI</CardTag>
+        <CardTag>Prescription integrity</CardTag>
         <p className="text-[15px] font-semibold text-[#0B1120] mb-1">Rx.ai</p>
         <p className="text-[11.5px] text-[#4A5568] leading-relaxed mb-2.5">Prescription claim integrity before dispensing. Catch documentation and coverage gaps before they become denials.</p>
         <a href="#" className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-[11.5px] font-semibold text-white transition-colors" style={{ background: "#4F46E5" }}>
@@ -170,7 +170,7 @@ const WoundCard = ({ showBody = true }: { showBody?: boolean }) => (
         {/* Header */}
         <div className="px-5 pt-4 pb-3 border-b border-[rgba(20,33,61,0.08)] flex items-center justify-between shrink-0">
           <div>
-            <p className="text-[13px] font-bold text-[#0B1120] tracking-tight">Wound.ai — Audit Review</p>
+            <p className="text-[13px] font-bold text-[#0B1120] tracking-tight">Chart.ai — Documentation Review</p>
             <p className="text-[10.5px] text-[#6B7280] mt-0.5">Patient #3847 · Sarah M. · Admitted 04/01/26</p>
           </div>
           <div className="flex gap-1.5 shrink-0">
@@ -221,7 +221,7 @@ const WoundCard = ({ showBody = true }: { showBody?: boolean }) => (
         </div>
       </div>
     </div>
-    {showBody && <CardBody tag="Wound care" name="Wound.ai" desc="Pre-bill revenue intelligence for wound care complexity. Reduce documentation gaps and denial exposure." cta="Explore Wound.ai →" />}
+    {showBody && <CardBody tag="Clinical integrity" name="Chart.ai" desc="Clinical claim integrity before billing. Validate documentation, coding, and payer requirements before the claim exists." cta="Explore Chart.ai →" />}
   </div>
 );
 
@@ -431,7 +431,7 @@ const PerformanceCard = ({ showBody = true }: { showBody?: boolean }) => (
         {/* Header */}
         <div className="px-5 pt-4 pb-3 border-b border-[rgba(20,33,61,0.07)] flex items-center justify-between shrink-0">
           <div>
-            <p className="text-[13px] font-bold text-[#0B1120]">Performance.ai — Dashboard</p>
+            <p className="text-[13px] font-bold text-[#0B1120]">RCM.ai — Revenue Dashboard</p>
             <p className="text-[10.5px] text-[#6B7280] mt-0.5">Revenue overview · Apr 2026</p>
           </div>
           <Pill variant="ok">+11% vs last month</Pill>
@@ -489,7 +489,74 @@ const PerformanceCard = ({ showBody = true }: { showBody?: boolean }) => (
         </div>
       </div>
     </div>
-    {showBody && <CardBody tag="Analytics" name="Performance.ai" desc="Turn pre-bill insights into operational visibility. Monitor risk patterns, workflow gaps, and revenue performance trends." cta="Explore Performance.ai →" />}
+    {showBody && <CardBody tag="Revenue integrity" name="RCM.ai" desc="Revenue integrity before claim submission. Prevent client-specific, specialty, and payer errors before they become rework." cta="Explore RCM.ai →" />}
+  </div>
+);
+
+/* ─── Card — Audit.ai ────────────────────────────────────────────────────── */
+/* Deep teal-navy bg · payment-integrity audit panel */
+
+const AuditCard = ({ showBody = true }: { showBody?: boolean }) => (
+  <div className={`rounded-2xl overflow-hidden ${showBody ? "border border-[rgba(49,82,173,0.25)]" : ""}`}>
+    <div className="relative overflow-hidden" style={{ height: showBody ? "260px" : "420px", background: "#0B2E4A" }}>
+      <ArcPattern />
+      <DotGrid opacity={0.1} />
+      {/* Panel centered */}
+      <div className="absolute inset-5 bg-white rounded-2xl overflow-hidden shadow-xl flex flex-col">
+        {/* Header */}
+        <div className="px-5 pt-4 pb-3 border-b border-[rgba(20,33,61,0.08)] flex items-center justify-between shrink-0">
+          <div>
+            <p className="text-[13px] font-bold text-[#0B1120]">Audit.ai — Payment Integrity</p>
+            <p className="text-[10.5px] text-[#6B7280] mt-0.5">Run #AUD-4471 · 12,480 claims · 04/09/26</p>
+          </div>
+          <Pill variant="review">Review queue</Pill>
+        </div>
+        {/* Summary tiles */}
+        <div className="px-5 pt-3 pb-2 shrink-0">
+          <div className="flex gap-2">
+            {[
+              { val: "100%", label: "Audited", color: "#0B1120" },
+              { val: "$8.4K", label: "Leakage", color: "#E24B4A" },
+              { val: "98.4%", label: "Clean rate", color: "#27AE60" },
+            ].map((s) => (
+              <div key={s.label} className="flex-1 bg-[rgba(20,33,61,0.04)] rounded-xl py-2.5 text-center">
+                <p className="text-[15px] font-bold leading-none" style={{ color: s.color }}>{s.val}</p>
+                <p className="text-[9.5px] text-[#6B7280] mt-1">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Findings */}
+        <div className="px-5 py-1 flex-1 overflow-hidden">
+          {[
+            { dot: "#E24B4A", label: "Coverage conflict — secondary policy", sub: "CLM-8192 · MSP questionnaire incomplete", pill: <Pill variant="gap">94%</Pill> },
+            { dot: "#FCA311", label: "Coding mismatch — modifier bundle", sub: "CLM-7703 · HBOT modifier validation", pill: <Pill variant="review">88%</Pill> },
+            { dot: "#FCA311", label: "Policy alignment — prior auth token", sub: "CLM-9021 · epidural without active PA", pill: <Pill variant="review">78%</Pill> },
+            { dot: "#27AE60", label: "Documentation — measurements present", sub: "CLM-5521 · cleared by audit engine", pill: <Pill variant="ok">Clean</Pill> },
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-3 py-2 border-b border-[rgba(20,33,61,0.06)] last:border-0">
+              <div className="w-2.5 h-2.5 rounded-full mt-1 shrink-0" style={{ background: item.dot }} />
+              <div className="flex-1 min-w-0">
+                <p className="text-[11.5px] font-semibold text-[#1F2937] truncate">{item.label}</p>
+                <p className="text-[10px] text-[#9CA3AF] mt-0.5 truncate">{item.sub}</p>
+              </div>
+              <div className="shrink-0 mt-0.5">{item.pill}</div>
+            </div>
+          ))}
+        </div>
+        {/* Footer */}
+        <div className="px-5 pb-5 shrink-0">
+          <div className="bg-[#0B1120] rounded-xl px-4 py-3 flex items-center justify-between">
+            <div>
+              <p className="text-[12px] font-semibold text-white">3 overpayment risks flagged before reimbursement</p>
+              <p className="text-[10px] text-white/50 mt-0.5">Reasoned findings · ranked review queue</p>
+            </div>
+            <span className="text-[11px] font-bold text-[#FCA311] ml-4 shrink-0">Review →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {showBody && <CardBody tag="Payment integrity" name="Audit.ai" desc="Payment integrity before reimbursement. Detect coverage, coding, and policy conflicts before overpayments happen." cta="Explore Audit.ai →" />}
   </div>
 );
 
@@ -497,31 +564,34 @@ const PerformanceCard = ({ showBody = true }: { showBody?: boolean }) => (
 
 const CARDS = [
   <RxAiCard key="rx" />,
-  <WoundCard key="wound" />,
+  <AuditCard key="audit" />,
+  <PerformanceCard key="rcm" />,
+  <WoundCard key="chart" />,
   <PainCard key="pain" />,
   <PriorAuthCard key="prior" />,
   <EligibilityCard key="elig" />,
-  // <PerformanceCard key="perf" />,
 ];
 
 const ILLUSTRATION_CARDS = [
   <RxAiCard key="rx-il" showBody={false} />,
-  <WoundCard key="wound-il" showBody={false} />,
+  <AuditCard key="audit-il" showBody={false} />,
+  <PerformanceCard key="rcm-il" showBody={false} />,
+  <WoundCard key="chart-il" showBody={false} />,
   <PainCard key="pain-il" showBody={false} />,
   <PriorAuthCard key="prior-il" showBody={false} />,
   <EligibilityCard key="elig-il" showBody={false} />,
-  // <PerformanceCard key="perf-il" showBody={false} />,
 ];
 
 /* ─── Step data ──────────────────────────────────────────────────────────── */
 
 const STEPS = [
-  { num: "01", name: "Rx.ai",          desc: "Prescription claim integrity before dispensing. Catch documentation and coverage gaps before they become denials.", href: '/rxai' },
-  { num: "02", name: "Wound.ai",       desc: "Pre-bill revenue intelligence for wound care complexity. Reduce documentation gaps and denial exposure.",href: '/wound' },
-  { num: "03", name: "Pain.ai",        desc: "AI-powered billing validation for pain management. Prevent coding misalignment before submission.",href: '/pain' },
-  { num: "04", name: "PriorAuth.ai",   desc: "Detect authorization gaps before they delay reimbursement and disrupt claims.",href: '/priorauth' },
-  { num: "05", name: "Eligibility.ai", desc: "Catch coverage and eligibility breakdowns upstream. Minimize preventable claim rejections.", href: '/eligibility' },
-  // { num: "06", name: "Performance.ai", desc: "Turn pre-bill insights into operational visibility. Monitor risk patterns and revenue trends.", href: '/rxai'},
+  { num: "01", name: "Rx.ai",         desc: "Prescription claim integrity before dispensing. Catch documentation and coverage gaps before they become denials.", href: '/rxai' },
+  { num: "02", name: "Audit.ai",      desc: "Payment integrity before reimbursement. Detect coverage, coding, and policy conflicts before overpayments happen.", href: '/auditai' },
+  { num: "03", name: "RCM.ai",        desc: "Revenue integrity before claim submission. Prevent client-specific, specialty, and payer errors before they become rework.", href: '/rcmai' },
+  { num: "04", name: "Chart.ai",      desc: "Clinical claim integrity before billing. Validate documentation, coding, and payer requirements before the claim exists.", href: '/claimintegrity' },
+  { num: "05", name: "Pain.ai",       desc: "AI-powered billing validation for pain management. Prevent coding and documentation misalignment before submission.", href: '/pain' },
+  { num: "06", name: "PriorAuth.ai",  desc: "Detect authorization gaps before they delay reimbursement and disrupt claims.", href: '/priorauth' },
+  { num: "07", name: "Eligibility.ai", desc: "Catch coverage and eligibility breakdowns upstream. Minimize preventable claim rejections.", href: '/eligibility' },
 ];
 
 /* ─── Left panel ─────────────────────────────────────────────────────────── */

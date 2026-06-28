@@ -422,46 +422,52 @@ export default function PartnersPage() {
 
       {/* ───────────────── 6. PARTNER ECOSYSTEM (torn white card on dark) ───────────────── */}
       <section id="ecosystem" className="relative overflow-hidden bg-[#0f192a] py-20 md:py-28">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-10">
           <FadeIn>
             <div
-              className="relative bg-white p-8 md:p-14"
-              style={{ WebkitMaskImage: TORN_MASK, maskImage: TORN_MASK, WebkitMaskSize: "100% 100%", maskSize: "100% 100%" }}
+              className="relative bg-white px-9 py-14 md:px-[72px] md:py-[76px]"
+              style={{
+                WebkitMaskImage: TORN_MASK,
+                maskImage: TORN_MASK,
+                WebkitMaskSize: "100% 100%",
+                maskSize: "100% 100%",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+              }}
             >
-              <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-                <div className="flex flex-1 flex-col gap-5">
+              <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
+                {/* Left — eyebrow, heading, copy */}
+                <div className="flex flex-col gap-6 lg:w-[44%]">
                   <Eyebrow color="#255ba8">The partner ecosystem</Eyebrow>
-                  <h2 className="text-[34px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0f172a] md:text-[44px]">
+                  <h2 className="max-w-[420px] text-[34px] font-extrabold leading-[1.12] tracking-[-0.015em] text-[#33445f] md:text-[44px]">
                     If you depend on claim integrity, you can build here.
                   </h2>
-                  <p className="text-[16px] leading-[1.7] text-[#334155]">
+                  <p className="max-w-[400px] text-[16px] leading-[1.72] text-[#475569]">
                     The ecosystem is wide on purpose. Anyone who works with claims holds knowledge worth
                     encoding.
                   </p>
-                  <p className="text-[16px] font-medium leading-[1.7] text-[#1e293b]">
+                  <p className="max-w-[400px] text-[16px] leading-[1.72] text-[#33445f]">
                     You do not have to fit a category. If you understand a corner of the claim better than
                     the software does, there is a playbook in it.
                   </p>
                 </div>
 
-                <div className="w-full lg:w-[54%]">
-                  <div className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2">
+                {/* Right — 2-column text grid (no icons, exactly like Figma) */}
+                <div className="flex-1">
+                  <div className="grid grid-cols-1 gap-x-12 gap-y-9 sm:grid-cols-2">
                     {[
-                      { icon: Stethoscope, title: "Providers and MSOs.", body: "How care actually gets documented and billed in your specialty." },
-                      { icon: ShieldCheck, title: "Payers and TPAs.", body: "The adjudication logic that decides what gets paid." },
-                      { icon: Users, title: "Plan sponsors.", body: "Self funded employers who fund the claims and want to audit what they fund." },
-                      { icon: Pill, title: "Pharmacy networks.", body: "PSAOs, long term care, and specialty pharmacy, each with logic that does not transfer to anyone else." },
-                      { icon: Layers3, title: "Specialty verticals.", body: "Wound care, pain management, DME, and behavioral health. Logic a general tool guesses at and you know cold." },
-                      { icon: GitBranch, title: "RCM firms and advisors.", body: "Consultants, auditors, brokers, and integrators who already sit between many providers and many payers." },
+                      { title: "Providers and MSOs.", body: "How care actually gets documented and billed in your specialty." },
+                      { title: "Payers and TPAs.", body: "The adjudication logic that decides what gets paid." },
+                      { title: "Plan sponsors.", body: "Self funded employers who fund the claims and want to audit what they fund." },
+                      { title: "Pharmacy networks.", body: "PSAOs, long term care, and specialty pharmacy, each with logic that does not transfer to anyone else." },
+                      { title: "Specialty verticals.", body: "Wound care, pain management, DME, and behavioral health. Logic a general tool guesses at and you know cold." },
+                      { title: "RCM firms and advisors.", body: "Consultants, auditors, brokers, and integrators who already sit between many providers and many payers." },
                     ].map((p) => (
-                      <div key={p.title} className="group flex gap-3.5">
-                        <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-[#e7f1ff] text-[#2563eb] transition-colors group-hover:bg-[#2563eb] group-hover:text-white">
-                          <p.icon className="h-5 w-5" />
-                        </span>
-                        <div>
-                          <p className="text-[15px] font-bold text-[#355a7b]">{p.title}</p>
-                          <p className="mt-1 text-[13px] leading-[1.6] text-[#5079b2]">{p.body}</p>
-                        </div>
+                      <div key={p.title} className="group max-w-[260px] transition-transform duration-200 hover:translate-x-0.5">
+                        <p className="text-[16px] font-bold text-[#355a7b] transition-colors group-hover:text-[#1d4f8a]">
+                          {p.title}
+                        </p>
+                        <p className="mt-2 text-[14px] leading-[1.65] text-[#5079b2]">{p.body}</p>
                       </div>
                     ))}
                   </div>
@@ -604,6 +610,5 @@ export default function PartnersPage() {
   );
 }
 
-/* SVG torn / deckle edge mask for the partner-ecosystem card */
-const TORN_MASK =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='560' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M14 26 38 14 70 30 104 12 140 30 176 14 214 30 252 16 292 30 332 16 372 30 414 16 456 30 500 16 544 30 590 16 636 30 682 16 728 30 774 16 820 30 866 16 912 30 958 16 1004 30 1050 16 1096 30 1140 16 1176 28 1186 540 1150 548 1110 534 1066 550 1020 534 974 550 928 534 882 550 836 534 790 550 744 534 698 550 652 534 606 550 560 534 514 550 468 534 422 550 376 534 330 550 284 534 238 550 192 534 146 550 100 534 56 548 18 536 Z'/%3E%3C/svg%3E\")";
+/* Fine torn / deckle paper edge mask for the partner-ecosystem card */
+const TORN_MASK = "url(/partners-figma/torn-edge.svg)";

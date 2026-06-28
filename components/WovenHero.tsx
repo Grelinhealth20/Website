@@ -35,10 +35,10 @@ export function WovenLightHero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] text-white font-bold leading-[1.1] tracking-tight"
             style={{ textShadow: '0 0 60px rgba(255,255,255,0.10)' }}
           >
-            The AI Intelligence Layer for Pre-Bill Revenue Integrity
+            The AI platform for Claim Integrity
           </h1>
-          <p className="mt-6 max-w-md text-base sm:text-lg text-slate-400 leading-relaxed">
-            Purpose-built AI applications that detect and resolve revenue risk before claims are submitted.
+          <p className="mt-6 max-w-xl text-base sm:text-lg text-slate-400 leading-relaxed">
+            One engine reads clinical and financial data, understands payer rules, and applies judgment to the claim. Upstream it prevents the bad claim. Downstream it audits the claim at scale.
           </p>
 
           <motion.div
@@ -47,19 +47,19 @@ export function WovenLightHero() {
             transition={{ delay: 1.2, duration: 1 }}
             className="mt-10 flex gap-3 sm:gap-4 flex-wrap"
           >
-            <button 
+            <button
             onClick={() => {
-            window.location.href = '/solutions'
+            window.location.href = '/platform'
             }}
             className="rounded-lg bg-white px-6 sm:px-8 py-3 text-sm font-semibold text-[#0B1120] transition-all hover:bg-white/90 cursor-pointer">
-              Explore Grelin Solutions →
+              See the Platform →
             </button>
-            <button 
+            <button
             onClick={() => {
-              window.open('https://revenue-risk.grelinhealth.com', '_blank', 'noopener,noreferrer');
+              window.location.href = '/company?service=request-a-demo';
             }}
             className="rounded-lg border border-white/25 bg-white/[0.08] px-6 sm:px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-white/15 cursor-pointer">
-              Find My Revenue Risks →
+              Talk to Claim Integrity team
             </button>
 
           </motion.div>
@@ -70,7 +70,7 @@ export function WovenLightHero() {
             transition={{ delay: 1.6, duration: 1 }}
             className="mt-6 text-sm text-slate-500"
           >
-            Built for healthcare finance teams · Specialty-aware · No rip-and-replace
+            Two flagship applications. RxAI for the pharmacy supply chain. Audit.ai for payers and audit organizations.
           </motion.p>
         </motion.div>
 

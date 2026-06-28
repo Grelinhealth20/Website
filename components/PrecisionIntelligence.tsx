@@ -1,237 +1,107 @@
-import { useEffect, useRef } from "react";
-import SPattern from '../components/ui/s-pattern';
-import PiImg1 from '@/public/PiImg1.png'
-import PiImg2 from '@/public/PiImg2.png'
-import PiImg3 from '@/public/PiImg3.png'
-import PiImg4 from '@/public/PiImg4.png'
-import { animate, useMotionValue, motion, useTransform } from "framer-motion";
+"use client";
 
+import SPattern from "../components/ui/s-pattern";
+import { motion, useReducedMotion } from "framer-motion";
+import PiImg1 from "@/public/PiImg1.png";
+import PiImg2 from "@/public/PiImg2.png";
+import PiImg3 from "@/public/PiImg3.png";
+import PiImg4 from "@/public/PiImg4.png";
 
 const cards = [
-  { title: "Real-time Claims Monitoring", description: "Proactive revenue monitoring to catch failures before they happen.", glass: true, firstCard: true, img: PiImg1 },
-  { title: "Global Registry", description: "Proactive revenue monitoring to catch failures before they happen.", glass: false, img: PiImg2 },
-  { title: "Eligibility & Authorization", description: "Verifies coverage and authorizations to prevent revenue delays.", glass: false, img: PiImg3 },
-  { title: "Risk Scoring Engine", description: "Assigns risk scores to surface priority issues first.", glass: false, img: PiImg4 },
+  {
+    title: "Real-time Claims Monitoring",
+    description: "Proactive revenue monitoring that catches failures before they happen.",
+    img: PiImg1,
+  },
+  {
+    title: "Global Registry",
+    description: "Comprehensive payer coverage validated across a global registry of plans.",
+    img: PiImg2,
+  },
+  {
+    title: "Eligibility & Authorization",
+    description: "Verifies coverage and authorizations to prevent revenue delays.",
+    img: PiImg3,
+  },
+  {
+    title: "Risk Scoring Engine",
+    description: "Assigns risk scores to surface the highest-priority issues first.",
+    img: PiImg4,
+  },
 ];
 
 export default function PrecisionIntelligence() {
-   const containerRef = useRef<HTMLDivElement>(null);
-   const trackRef = useRef<HTMLDivElement>(null);
-  
-    const x = useMotionValue(0);
-   const translateX = useTransform(x, (v) => `translateX(${v}px)`);
- useEffect(() => {
-  const container = containerRef.current;
-  const track = trackRef.current;
-
-  if (!container || !track) return;
-
-  const onWheel = (e: WheelEvent) => {
-    const maxScroll =
-      track.scrollWidth - container.clientWidth;
-
-    const current = x.get();
-    const atStart = current >=0 && e.deltaY < 0;
-    const atEnd =  current <= -maxScroll && e.deltaY > 0;
-
-    if (atStart || atEnd) return;
-
-    e.preventDefault();
-
-    let next = current - e.deltaY * 1.2;
-
-    next = Math.min(0, Math.max(next, -maxScroll));
-
-    animate(x, next, {
-      type: "spring",
-      stiffness: 140,
-      damping: 24,
-    });
-
-    e.preventDefault();
-  };
-
-  container.addEventListener("wheel", onWheel, {
-    passive: false,
-  });
-
-  return () => {
-    container.removeEventListener("wheel", onWheel);
-  };
-}, [x]);
+  const reduce = useReducedMotion();
 
   return (
-    <div 
-    ref={containerRef}
-    className="flex items-center min-h-[640px] sm:min-h-[720px] 
-        justify-center
-        p-3 sm:p-6 
-        relative
-        w-full 
-        overflow-hidden
-        bg-[linear-gradient(225deg,#0A1F44_0%,#174EA6_38%,#3B82F6_70%,#93C5FD_100%)]
-        cursor-grab
-        active:cursor-grabbing
-        "
-        >
-          {/* Stripe pattern */}
-        <SPattern />
-        
+    <section
+      className="relative w-full overflow-hidden px-4 py-16 sm:px-6 sm:py-24
+        bg-[linear-gradient(225deg,#0A1F44_0%,#174EA6_38%,#3B82F6_70%,#93C5FD_100%)]"
+    >
+      {/* Stripe texture */}
+      <SPattern />
+
+      {/* Inner glass panel — centered, constrained */}
+      <div
+        className="relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px]
+          border border-white/20 px-5 py-10 sm:px-10 sm:py-14
+          shadow-[0_20px_60px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.45),inset_0_0_24px_rgba(255,255,255,0.12)]"
+        style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
+      >
+        {/* Soft top glow */}
         <div
-          className="
-            relative overflow-hidden
-            rounded-[24px]
-            bg-slate/[0.50]
-            border-white/20
-            backdrop-blur-4xl
-            w-full
-            min-h-[520px]
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-0 z-0 h-full w-3/5"
+          style={{ background: "radial-gradient(ellipse at 88% 8%, rgba(120,170,250,0.25) 0%, transparent 58%)" }}
+        />
 
-            shadow-[0_10px_40px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.45),inset_0_-1px_1px_rgba(255,255,255,0.08),inset_0_0_24px_rgba(255,255,255,0.18)]
+        {/* Header — centered */}
+        <div className="relative z-10 mx-auto mb-10 flex max-w-2xl flex-col items-center text-center sm:mb-14">
+          <span
+            className="mb-4 rounded-full border border-white/30 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur"
+          >
+            The Grelin Edge
+          </span>
+          <h2
+            className="text-[2.4rem] font-semibold leading-[1.02] tracking-[-0.025em] text-white sm:text-[3.25rem] md:text-[3.75rem]"
+          >
+            Precision Intelligence.
+          </h2>
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/75 sm:text-base">
+            Four capabilities working as one engine — monitoring, verifying, and scoring every claim in both directions.
+          </p>
+        </div>
 
-            before:absolute
-            before:inset-x-0
-            before:top-0
-            before:h-px
-            before:bg-gradient-to-r
-            before:from-transparent
-            before:via-white/80
-            before:to-transparent
-            before:content-['']
-
-            after:absolute
-            after:left-0
-            after:top-0
-            after:h-full
-            after:w-px
-            after:bg-[linear-gradient(180deg,rgba(255,255,255,0.9),transparent,rgba(255,255,255,0.2))]
-            after:content-['']
-          "
-        >
-
-            {/* Glow */}
-            <div
-              className="absolute top-0 right-0 pointer-events-none z-0"
-              style={{
-                width: "60%", height: "100%",
-                background: "radial-gradient(ellipse at 88% 8%,rgba(100,160,240,.22) 0%,transparent 58%)",
-              }}
-            />
-
-            {/* Content */}
-            <div className="relative z-10 flex flex-col h-full" style={{ padding: "20px 20px 0" }}>
-              {/* Badge */}
-              <div
-                className="w-fit mb-3 text-white/80"
-                style={{
-                  fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase",
-                  border: "1px solid rgba(255,255,255,.3)", background: "rgba(255,255,255,.1)",
-                  backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-                  padding: "4px 12px", borderRadius: 999,
-                }}
-              >
-                THE GRELIN EDGE
-              </div>
-
-              {/* Header */}
-              <div className="flex items-start justify-between mb-5">
-                <h1
-                  className="text-white font-semibold leading-none text-[2.2rem] sm:text-[3rem] md:text-[4.25rem]"
-                  style={{ letterSpacing: "-0.025em" }}
-                >
-                  Precision Intelligence.
-                </h1>
-                {/* <button
-                  className="flex items-center gap-1.5 whitespace-nowrap"
-                  style={{
-                    background: "rgba(255,255,255,.97)", color: "#1a3a7c",
-                    border: "none", borderRadius: 12, padding: "11px 18px",
-                    fontSize: 13.5, fontWeight: 600, cursor: "pointer", marginTop: 8,
-                    boxShadow: "0 2px 14px rgba(0,0,0,.2)",
-                  }}
-                >
-                  Explore All Features
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M5 11L9 7L5 3" stroke="#1a3a7c" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button> */}
-              </div>
-
-              {/* Cards viewport — no scrollbar */}
-              <div className="relative overflow-hidden mt-6 sm:mt-12">
-                <motion.div
-                  ref={trackRef}
-                  style={{ x }}
-                  className="flex 
-                  items-stretch
-                  gap-7
-                  pb-10
-                  will-change-transform
-                  "
-                >
-                  {cards.map((card, i) => (
-                    <div
-                      key={i}
-                      className="flex-shrink-0 flex flex-col"
-                      style={{
-                        width: "min(220px, 75vw)",
-                        borderRadius: card.firstCard ? "20px 0 0 20px" : 20,
-                        overflow: "hidden",
-                        background: card.glass
-                          ? "rgba(255,255,255,.14)"
-                          : "#fff",
-                        backdropFilter: card.glass ? "blur(18px)" : undefined,
-                        WebkitBackdropFilter: card.glass ? "blur(18px)" : undefined,
-                        border: card.glass ? "1px solid rgba(255,255,255,.28)" : "none",
-                        boxShadow: card.glass
-                          ? "0 8px 32px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.3)"
-                          : "0 6px 24px rgba(0,0,0,.14)",
-                        transition: "transform .22s ease",
-                      }}
-                    >
-                      <div style={{ padding: "12px 15px 0  " }}>
-                            <img 
-                            src={card.img.src}
-                            alt="PrecisionIntelligence Card image"
-                            className="object-cover"
-                            />
-                      </div>
-                      <div style={{ padding: "14px 15px 18px" }}>
-                        <p
-                          style={{
-                            fontSize: 14.5, fontWeight: 700, marginBottom: 5, lineHeight: 1.3,
-                            color: card.glass ? "#fff" : "#111827",
-                          }}
-                        >
-                          {card.title}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: 12.5, lineHeight: 1.55,
-                            color: card.glass ? "rgba(255,255,255,.7)" : "#6b7280",
-                          }}
-                        >
-                          {card.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Scroll hint */}
-            <div
-              className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1 pointer-events-none"
-              style={{ color: "rgba(255, 255, 255, 0.69)", fontSize: 11, letterSpacing: ".06em", opacity: 1 , transition: "opacity .3s" }}
+        {/* 4-card grid — centered, equal sizing */}
+        <div className="relative z-10 mx-auto grid max-w-[1120px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {cards.map((card, i) => (
+            <motion.div
+              key={card.title}
+              initial={reduce ? false : { opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={reduce ? undefined : { y: -6 }}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white
+                shadow-[0_8px_28px_rgba(0,0,0,0.18)] transition-shadow hover:shadow-[0_16px_40px_rgba(0,0,0,0.28)]"
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                <path d="M7 2v10M3 8l4 4 4-4" />
-              </svg>
-              scroll to explore
-            </div>
-
+              {/* Image panel — uniform aspect */}
+              <div className="aspect-[4/3] w-full overflow-hidden bg-[#EEF3FB] p-3">
+                <img
+                  src={card.img.src}
+                  alt={card.title}
+                  className="h-full w-full rounded-lg object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+              </div>
+              {/* Text */}
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-4">
+                <h3 className="text-[15.5px] font-bold leading-snug text-[#0E1B33]">{card.title}</h3>
+                <p className="mt-2 text-[13px] leading-[1.6] text-[#5B6B82]">{card.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
+    </section>
   );
 }

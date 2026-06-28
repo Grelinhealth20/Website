@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Zap, FileSearch, Shield, BadgeCheck, TrendingUp, Activity, Building2, ArrowRight, Home, BarChart2, Heart, ArrowDown, ShieldCheck, ChevronRight } from "lucide-react";
+import { Zap, FileSearch, Shield, BadgeCheck, TrendingUp, Activity, Building2, ArrowRight, Home, BarChart2, Heart, ArrowDown, ShieldCheck, ChevronRight, Cpu, Layers3 } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { WovenLightHero } from "@/components/WovenHero";
@@ -216,10 +216,7 @@ const fadeUp = {
 };
 
 const UpstreamMockup = () => {
-  // const [active, setActive] =
-  //   useState<keyof typeof dashboardData>('revenue');
-
-const active: keyof typeof dashboardData = 'revenue';
+  const [active, setActive] = React.useState<keyof typeof dashboardData>('revenue');
 
   const current = dashboardData[active];
 
@@ -238,21 +235,21 @@ const active: keyof typeof dashboardData = 'revenue';
             return (
               <motion.button
                 key={tab.key}
-                // whileTap={{ scale: 0.9 }}
-                // whileHover={{ scale: 1.08 }}
+                type="button"
+                aria-label={tab.key}
+                aria-pressed={isActive}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: isActive ? 1 : 1.08 }}
                 transition={{
                   type: 'spring',
                   stiffness: 300,
                   damping: 18,
                 }}
-                // onClick={() => setActive(tab.key as any)}
-                className={`relative flex h-12 w-12 items-center justify-center rounded-2xl transition-all duration-300 ${
-                  // isActive
-                  //   ? 'bg-[#E9EEFF] shadow-md'
-                  //   : 'bg-transparent'
+                onClick={() => setActive(tab.key as keyof typeof dashboardData)}
+                className={`relative flex h-12 w-12 items-center justify-center rounded-2xl transition-all duration-300 cursor-pointer ${
                   isActive
                 ? 'bg-[#E9EEFF] shadow-md'
-                : 'bg-transparent opacity-40 cursor-default'
+                : 'bg-transparent opacity-50 hover:opacity-100'
                 } ${i !== 0 ? 'mt-8' : ''}`}
               >
                 {isActive && (
@@ -460,12 +457,12 @@ const active: keyof typeof dashboardData = 'revenue';
     <section className="bg-white text-[#0A192F] py-16 md:py-24 lg:py-32 px-5 md:px-8 flex justify-center items-center text-center">
         <div className="max-w-4xl">
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl italic font-medium leading-tight mb-6 md:mb-8">
-            "Revenue doesn't break at submission. It breaks before it."
+            "The claim is decided long before billing ever sees it."
           </h2>
           <p className="text-[#0A192FCC] md:text-xl max-w-5xl mx-auto leading-relaxed">
-            Most organizations focus on denials after claims are rejected. But
-            revenue loss starts earlier — in documentation gaps, eligibility errors,
-            missing authorizations, and coding inconsistencies.
+            The same intelligence that prevents a bad claim is the intelligence that
+            recognizes one. Upstream it catches the error. Downstream it audits the
+            claim. The direction changes. The judgment does not.
           </p>
         </div>
       </section>
@@ -477,41 +474,56 @@ const active: keyof typeof dashboardData = 'revenue';
 
 
       {/* ── 4. Platform Positioning ── */}
-      <section className="bg-brand-dark px-4 md:px-8 lg:px-16 py-8 md:py-16 lg:py-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-x-10 lg:gap-x-16 gap-y-8 md:gap-y-10">
+      <section className="bg-brand-dark px-4 md:px-8 lg:px-16 pt-2 md:pt-4 lg:pt-6 pb-16 md:pb-20 lg:pb-24">
+        <div className="mx-auto max-w-6xl">
 
-            {/* Left: big headline — wider column */}
-            <AnimatedContainer>
-              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-balance">
-                Grelin is not a single RCM tool
-              </h2>
-            </AnimatedContainer>
+          {/* Header */}
+          <AnimatedContainer className="mx-auto max-w-3xl text-center">
+            <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6a97e8] mb-4">
+              The Platform
+            </span>
+            <h2 className="text-white text-3xl md:text-4xl lg:text-[2.9rem] font-extrabold leading-[1.1] tracking-tight text-balance">
+              Grelin is a platform, not a point tool.
+            </h2>
+          </AnimatedContainer>
 
-            {/* Column 1 */}
-            <AnimatedContainer delay={0.08} className="border-t border-white/25 pt-6">
-              <h3 className="text-white text-sm font-bold mb-3 uppercase tracking-wide">AI Intelligence Layer</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                An AI Intelligence Layer embedded into your existing healthcare workflows — analyzing clinical and financial signals before submission to detect risk, prevent breakdowns, and optimize performance.
-              </p>
-            </AnimatedContainer>
-
-            {/* Column 2 */}
-            <AnimatedContainer delay={0.12} className="border-t border-white/25 pt-6">
-              <h3 className="text-white text-sm font-bold mb-3 uppercase tracking-wide">Purpose-Built Apps</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Each Grelin application solves a specific pre-bill challenge. Every application is powered by the same intelligence engine.
-              </p>
-            </AnimatedContainer>
-
-            {/* Column 3 */}
-            <AnimatedContainer delay={0.16} className="border-t border-white/25 pt-6">
-              <h3 className="text-white text-sm font-bold mb-3 uppercase tracking-wide">Built to Scale</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                As your organization grows, the intelligence grows with it.
-              </p>
-            </AnimatedContainer>
-
+          {/* Three aligned cards */}
+          <div className="mt-12 md:mt-14 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                icon: Cpu,
+                title: "One Engine",
+                desc: "One engine reads the claim and applies payer logic before it exists and after.",
+              },
+              {
+                icon: Layers3,
+                title: "Flagship Applications",
+                desc: "RxAI and Audit.ai are the flagships. Specialty apps share the same engine.",
+              },
+              {
+                icon: TrendingUp,
+                title: "Every Claim Makes It Sharper",
+                desc: "The model that protected a pharmacy yesterday helps a payer today. Every claim makes the platform smarter.",
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <AnimatedContainer key={item.title} delay={i * 0.6} className="h-full">
+                  <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#3b6fd6]/50 hover:bg-white/[0.05] hover:shadow-[0_20px_50px_-24px_rgba(59,111,214,0.6)]">
+                    <div className="flex items-center justify-between">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#3b6fd6]/30 bg-[#13306a]/60 text-[#7aa6f5] transition-colors group-hover:border-[#3b6fd6]/60 group-hover:text-[#a6c6ff]">
+                        <Icon className="h-6 w-6" />
+                      </span>
+                      <span className="font-mono text-sm tabular-nums text-white/15">
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <h3 className="mt-6 text-lg font-bold tracking-tight text-white">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+                  </div>
+                </AnimatedContainer>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -555,14 +567,14 @@ const active: keyof typeof dashboardData = 'revenue';
 
                       {/* Title */}
                       <h1 className="font-bold tracking-[-0.04em] leading-tight text-[#6F7C95] text-[20px] sm:text-[24px] md:text-[30px] lg:text-[34px] xl:text-[40px]">
-                        Built for high-scrutiny specialities
+                        Built for every market that runs on claims
                       </h1>
                     </div>
 
                     {/* Description */}
                     <div className="mt-4">
                       <p className="font-normal leading-relaxed tracking-[-0.02em] text-[14px] sm:text-[15px] md:text-[17px] text-[#6F7C95]">
-                        Our platform is engineered for the complex clinical documentation and rigorous audit environments of specialized care.
+                        One platform serves every organization that touches a claim. From providers and pharmacies to payers and government programs, the same intelligence applies judgment before the claim is created and after it is filed.
                       </p>
                     </div>
                   </div>
@@ -570,26 +582,25 @@ const active: keyof typeof dashboardData = 'revenue';
             <div className="space-y-8 relative before:absolute before:inset-y-0 before:left-[23px] before:w-[2px] before:bg-gray-200">
               <div className="relative pl-16">
                 <div className="absolute left-0 top-1 w-12 h-12 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center z-10">
-                  <Activity className="w-5 h-5 text-[#0A192F]" />
+                  <ShieldCheck className="w-5 h-5 text-[#0A192F]" />
                 </div>
-                <h4 className="text-xl font-bold text-[#0A192F] mb-2">Wound Care</h4>
+                <h4 className="text-xl font-bold text-[#0A192F] mb-2">Payers &amp; Audit Organizations</h4>
                 <p className="text-[#77859A] text-sm leading-relaxed">
-                  Intelligent documentation analysis for complex clinical cases,
-                  ensuring every stage of healing is accurately captured and billed.
+                  Verify claim accuracy at full volume, not a sample. Audit every claim
+                  with reasoned findings and ranked review queues.
                 </p>
               </div>
 
               <div className="relative pl-16">
                 <div className="absolute left-0 top-1 w-12 h-12 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center z-10">
-                  <FileText className="w-5 h-5 text-[#0A192F]" />
+                  <Building2 className="w-5 h-5 text-[#0A192F]" />
                 </div>
                 <h4 className="text-xl font-bold text-[#0A192F] mb-2">
-                  Pain Management
+                  Pharmacy &amp; Distribution
                 </h4>
                 <p className="text-[#77859A] text-sm leading-relaxed">
-                  Automated pre-bill verification for interventional procedures,
-                  managing rigorous authorization requirements without slowing
-                  throughput.
+                  Enforce authorization, coding, and documentation integrity across the
+                  supply chain before dispense or billing.
                 </p>
               </div>
 
@@ -598,11 +609,24 @@ const active: keyof typeof dashboardData = 'revenue';
                   <Users className="w-5 h-5 text-[#0A192F]" />
                 </div>
                 <h4 className="text-xl font-bold text-[#0A192F] mb-2">
-                  MSO & Multi-Specialty
+                  Providers &amp; MSOs
                 </h4>
                 <p className="text-[#77859A] text-sm leading-relaxed">
-                  Centralized revenue intelligence for multi-facility operations,
-                  providing uniform quality standards across a diverse portfolio.
+                  Apply payer logic before submission to prevent documentation, coding,
+                  authorization, and billing errors.
+                </p>
+              </div>
+
+              <div className="relative pl-16">
+                <div className="absolute left-0 top-1 w-12 h-12 bg-white border-2 border-gray-200 rounded-xl flex items-center justify-center z-10">
+                  <BadgeCheck className="w-5 h-5 text-[#0A192F]" />
+                </div>
+                <h4 className="text-xl font-bold text-[#0A192F] mb-2">
+                  Government Program Integrity
+                </h4>
+                <p className="text-[#77859A] text-sm leading-relaxed">
+                  Support Medicare, Medicaid, and CMS initiatives that reduce fraud,
+                  waste, and improper payments at scale.
                 </p>
               </div>
             </div>
@@ -658,19 +682,16 @@ const active: keyof typeof dashboardData = 'revenue';
         <AnimatedContainer className="mx-auto max-w-4xl">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0D1C2E] mb-8 leading-tight text-balance">
-              See where your revenue is at risk{" "}
-              <span className="text-blue-600">before claims go out the door</span>
+              See what the platform does to a claim{" "}
+              <span className="text-blue-600">in both directions.</span>
             </h2>
             <p className="text-[#434655] text-sm sm:text-base font-normal mb-10 max-w-xl mx-auto">
               Grelin identifies pre-bill revenue risk across documentation,
               eligibility, authorization, and coding before it becomes a denial.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              {/* <a href="#" className="bg-[#0B1C30] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#0B1C30] transition-colors flex items-center justify-center gap-2">
-                Find My Revenue Risks <ArrowRight className="w-4 h-4" />
-              </a> */}
               <a href="/company?service=request-a-demo" className="bg-white border border-[#737686] text-[#0D1C2E] px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
-                Talk to a Grelin Expert
+                Talk to the Claim Integrity team
               </a>
             </div>
           </div>
