@@ -59,27 +59,27 @@ function FadeIn({
 const riskCards = [
   {
     title: "Margin lives in clean claims",
-    body: "You run revenue cycle for dozens of physician clients. Every denial you work is your P&L, not just your client's revenue. Grelin's pre-bill intelligence validates each claim before submission so the work you bill is work you keep.",
+    body: "You run revenue cycle for dozens of physician clients. Every denial you work is your P&L — not just your client's revenue. Powered by PriorAuth, Eligibility, and Grelin's specialty applications, claim integrity is enforced before submission. The same coder manages more accounts because rework volume drops.",
   },
   {
     title: "Payer logic enforced before the claim is written",
-    body: "A pain management group bills nothing like a wound care group, and payer policy varies by region, plan, and LCD. Wound.ai, Pain.ai, Behavioral.ai, and DME.ai enforce specialty-specific payer rules, documentation standards, and coding before the claim exists.",
+    body: "A pain management group bills nothing like a wound care group. National payer policy varies by region, plan, and LCD. Wound.ai, Pain.ai, Behavioral.ai, and DME.ai enforce specialty-specific payer rules, documentation standards, coding requirements, and claim integrity controls before submission. Denial appeal work moves upstream into documentation and coding, where the leak actually starts.",
   },
   {
     title: "One P&L. Consistent integrity across every practice.",
-    body: "Multiple specialties, EHRs, and billing teams — one P&L. The platform combines specialty applications into a single operating view, normalizing claim integrity across every practice and showing central operators exactly where revenue is leaking.",
+    body: "Multiple specialties, EHRs, and billing teams — one P&L. Variability across the portfolio creates rework no central team can fully manage. The platform combines Wound.ai, Pain.ai, Behavioral.ai, DME.ai, PriorAuth, and Eligibility into a single operating view across the portfolio. Grelin normalizes claim integrity across every practice and gives central operators a single view of where revenue is leaking.",
   },
   {
     title: "Close audit exposure before billing",
-    body: "DME denial rates are among the highest in U.S. healthcare. A missing physician signature or documentation gap can void a month of billing. DME.ai validates documentation, physician orders, signatures, and LCD requirements before the claim leaves the building.",
+    body: "DME denial rates are among the highest in U.S. healthcare. A missing physician signature or documentation gap can void an entire month of billing. DME.ai validates documentation, physician orders, signatures, LCD requirements, and billing rules before the claim leaves the building.",
   },
   {
     title: "A missed step on a $50,000 claim is a margin event",
-    body: "Specialty drugs carry prior-authorization complexity, J-code rules, and white-bagging logistics. A missed step on a high-dollar claim is not a denial to appeal later — it is the margin on the dispense, gone. RxAI enforces authorization, coding, and documentation before the drug moves.",
+    body: "Specialty drugs carry prior authorization complexity, J-code rules, and white-bagging logistics. A missed step on a high-dollar claim is not a denial to appeal later. It is the margin on the dispense, gone. RxAI enforces authorization, coding, and documentation requirements before the drug moves, reducing reimbursement risk and protecting margin across the distribution chain.",
   },
   {
     title: "The claim arrives clean",
-    body: "The payer carries the cost of the broken claim — pended reviews, record requests, appeals, and provider calls. Audit.ai runs every claim through 29 checks in minutes and ranks what to look at first. Audit the whole book, not two percent of it.",
+    body: "The payer carries the cost of the broken claim. Pended reviews, medical record requests, appeals, and provider calls. Today that work is sampled because a full audit takes too long to build and run. Audit.ai runs every claim through 29 checks in minutes and ranks what to look at first. Audit the whole book, not two percent of it. Lower cost per claim. Cleaner findings. Less friction with providers.",
   },
 ];
 
@@ -368,7 +368,18 @@ export default function IndustriesPage() {
             </p>
           </FadeIn>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {/* Top 3 revenue risk areas — highlighted callout */}
+          <FadeIn delay={0.1}>
+            <div className="mx-auto mt-9 max-w-2xl rounded-2xl border border-white/15 bg-white/[0.08] px-6 py-5 text-center backdrop-blur">
+              <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#bfe0ff]">Top 3 revenue risk areas</p>
+              <p className="mx-auto mt-2 max-w-xl text-[14px] leading-relaxed text-blue-100/85">
+                Precision analysis of specialty-specific leakage. We pinpoint the exact stages where claims
+                are historically compromised within your organization.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {riskCards.map((c, i) => (
               <FadeIn key={c.title} delay={(i % 3) * 0.06}>
                 <div className="group h-full rounded-2xl border border-white/12 bg-white/[0.07] p-6 backdrop-blur transition-all hover:-translate-y-1.5 hover:border-white/30 hover:bg-white/[0.11]">
