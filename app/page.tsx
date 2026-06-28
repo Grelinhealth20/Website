@@ -70,7 +70,7 @@ function ExpandingSection({ children, innerClassName }: { children: React.ReactN
   if (shouldReduceMotion) {
     return (
       <div className="bg-brand-dark">
-        <div className={`bg-white px-5 md:px-10 lg:px-20 py-16 md:py-24 lg:py-32 ${innerClassName ?? ""}`}>
+        <div className={`bg-white px-5 md:px-10 lg:px-20 py-12 md:py-18 lg:py-24 ${innerClassName ?? ""}`}>
           {children}
         </div>
       </div>
@@ -80,7 +80,7 @@ function ExpandingSection({ children, innerClassName }: { children: React.ReactN
   return (
     <motion.div ref={ref} className="bg-brand-dark" style={{ paddingLeft: paddingX, paddingRight: paddingX }}>
       <motion.div
-        className={`bg-white px-5 md:px-10 lg:px-20 py-16 md:py-24 lg:py-32 ${innerClassName ?? ""}`}
+        className={`bg-white px-5 md:px-10 lg:px-20 py-12 md:py-18 lg:py-24 ${innerClassName ?? ""}`}
         style={{ borderRadius }}
       >
         {children}
@@ -221,7 +221,7 @@ const UpstreamMockup = () => {
   const current = dashboardData[active];
 
   return (
-    <div className="relative mx-auto w-full max-w-[1180px]">
+    <div className="relative mx-auto w-full max-w-[960px]">
 
       <div className="flex items-stretch gap-3 sm:gap-5">
 
@@ -454,7 +454,7 @@ const UpstreamMockup = () => {
       <WovenLightHero />
 
       {/* ── 2. Problem Reframe ── */}
-    <section className="bg-white text-[#0A192F] py-16 md:py-24 lg:py-32 px-5 md:px-8 flex justify-center items-center text-center">
+    <section className="bg-white text-[#0A192F] py-12 md:py-18 lg:py-24 px-5 md:px-8 flex justify-center items-center text-center">
         <div className="max-w-4xl">
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl italic font-medium leading-tight mb-6 md:mb-8">
             "The claim is decided long before billing ever sees it."
@@ -529,7 +529,7 @@ const UpstreamMockup = () => {
       </section>
 
       {/* ── 6. Specialties ── */}
-      <section className="bg-white bg-grid-pattern py-16 md:py-24 lg:py-32 px-4 md:px-8 relative">
+      <section className="bg-white bg-grid-pattern py-12 md:py-18 lg:py-24 px-4 md:px-8 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none"></div>
           <div
     className="absolute inset-0 opacity-[0.15] pointer-events-none"
@@ -636,7 +636,7 @@ const UpstreamMockup = () => {
 
 
       {/* ���─ 7. Proof + Form ── */}
-<section className="py-12 md:py-20 lg:py-28 px-4 md:px-8 relative overflow-hidden mx-auto w-full bg-[radial-gradient(140%200%_at_120%_20%,#1A66DA_0%,#0E52B8_30%,#0A3C8A_60%,#061F4E_80%,#020B1D_100%)]">
+<section className="py-10 md:py-16 lg:py-20 px-4 md:px-8 relative overflow-hidden mx-auto w-full bg-[radial-gradient(140%200%_at_120%_20%,#1A66DA_0%,#0E52B8_30%,#0A3C8A_60%,#061F4E_80%,#020B1D_100%)]">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
     <div className="max-w-7xl mx-auto relative z-10">
       <div className="max-w-3xl mb-8 md:mb-14">
@@ -678,7 +678,7 @@ const UpstreamMockup = () => {
           </div>
         </AnimatedContainer>
       </section> */}
-      <section className="bg-white py-16 md:py-24 lg:py-32 px-4 md:px-8 text-center">
+      <section className="bg-white py-12 md:py-18 lg:py-24 px-4 md:px-8 text-center">
         <AnimatedContainer className="mx-auto max-w-4xl">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0D1C2E] mb-8 leading-tight text-balance">

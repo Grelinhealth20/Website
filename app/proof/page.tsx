@@ -4,7 +4,7 @@ import { motion, animate, useMotionValue, useTransform, useReducedMotion, useScr
 import React, { useRef, useState, useEffect } from "react";
 import { CheckCircle2, AlertTriangle, Activity, BarChart2, FileText, Settings, Bell, GitMerge } from "lucide-react";
 import { Footer } from "@/components/Footer";
-import { GCanvasStatic } from "@/components/WovenHero";
+import { GCanvas } from "@/components/WovenHero";
 
 /* ─── Shared animation helpers ─────────────────────────────────────────────── */
 
@@ -837,99 +837,29 @@ const ORBIT_CFG = Array.from({ length: 9 }, (_, i) => ({
   spd: ORBIT_SPD,
 }));
 
+/* Proof product modules — rendered as the in-G hotspot cards, exactly like the
+   home page animation (same GCanvas source), with proof content. */
+const PROOF_CARDS = [
+  { label: "Wound.ai",       desc: "Validates wound documentation before submission, then audits the built claim downstream." },
+  { label: "Pain.ai",        desc: "Aligns pain management coding with payer policy before and after the claim." },
+  { label: "Audit.ai",       desc: "Layered audit checks surface accuracy and fraud risk on submitted claims." },
+  { label: "Eligibility.ai", desc: "Confirms coverage and authorization upstream, before claims are built." },
+  { label: "PriorAuth.ai",   desc: "Confirms prior authorization before claims leave the billing system." },
+];
+
 function GOrbitSection() {
-  const pausedRef    = useRef(false);
-  const pillRefs     = useRef<(HTMLDivElement | null)[]>([]);
-  const rafRef       = useRef<number>(0);
-  const anglesRef    = useRef(ORBIT_CFG.map(c => c.a));
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scaleRef     = useRef(1);
-
-  // Recompute orbit scale whenever the container resizes
-  useEffect(() => {
-    const update = () => {
-      if (!containerRef.current) return;
-      const w = containerRef.current.clientWidth;
-      // At 900 px the orbit fills nicely; scale down linearly on narrower screens
-      scaleRef.current = Math.min(w / 900, 1);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  useEffect(() => {
-    function tick() {
-      // Advance angles only when not paused
-      if (!pausedRef.current) {
-        for (let i = 0; i < ORBIT_CFG.length; i++) {
-          anglesRef.current[i] -= ORBIT_CFG[i].spd; // decrement = counter-clockwise
-        }
-      }
-
-      // Apply positions every frame regardless (keeps DOM in sync after pause)
-      const s = scaleRef.current;
-      for (let i = 0; i < ORBIT_CFG.length; i++) {
-        const rad = (anglesRef.current[i] * Math.PI) / 180;
-        const x   = Math.cos(rad) * ORBIT_CFG[i].rx * s;
-        const y   = Math.sin(rad) * ORBIT_CFG[i].ry * s;
-        const el  = pillRefs.current[i];
-        if (el) {
-          el.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-        }
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
-    }
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
   return (
     <motion.div
-      ref={containerRef}
-      className="relative w-full overflow-hidden hidden sm:block"
-      style={{ minHeight: "calc(100vh - 280px)", maxHeight: "calc(100vh - 280px)" }}
+      className="relative hidden w-full sm:block"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.01, margin: "0px 0px -120px 0px" }}
       transition={{ duration: 0.8 }}
-      onMouseEnter={() => { pausedRef.current = true; }}
-      onMouseLeave={() => { pausedRef.current = false; }}
     >
-      {/* G canvas — scales with container width */}
-      <div
-        className="absolute left-1/2 top-1/2 pointer-events-none"
-        style={{
-          width: "min(600px, 85%)",
-          aspectRatio: "600 / 580",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <GCanvasStatic />
+      {/* Exact home-page G animation — flowing orbs + integrated hotspot cards */}
+      <div className="relative mx-auto w-full" style={{ maxWidth: 1000, aspectRatio: "1000 / 640" }}>
+        <GCanvas cards={PROOF_CARDS} />
       </div>
-
-      {/* Floating pills — smooth circular orbit, counter-clockwise */}
-      {ORBIT_PILLS.map((pill, i) => {
-        const cfg = ORBIT_CFG[i];
-        const rad = (cfg.a * Math.PI) / 180;
-        const ix  = Math.cos(rad) * cfg.rx;
-        const iy  = Math.sin(rad) * cfg.ry;
-        return (
-          <div
-            key={i}
-            ref={el => { pillRefs.current[i] = el; }}
-            className="absolute left-1/2 top-1/2"
-            style={{
-              zIndex: 20,
-              transform: `translate(calc(-50% + ${ix}px), calc(-50% + ${iy}px))`,
-            }}
-          >
-            <FloatingPill {...pill} />
-          </div>
-        );
-      })}
     </motion.div>
   );
 }
@@ -962,13 +892,10 @@ export default function ProofPage() {
               </h1>
             </AnimatedContainer>
             <AnimatedContainer delay={0.25}>
-              <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-                Grelin introduces intelligence into the pre-billing phase of the revenue cycle, helping healthcare organizations prevent revenue leakage before claims are submitted.
-              </p>
-            </AnimatedContainer>
-            <AnimatedContainer delay={0.32}>
-              <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-                The result is measurable improvement across claim acceptance, operational efficiency, and revenue predictability.
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl">
+                Grelin brings intelligence into the pre-billing stage of the revenue cycle, helping
+                healthcare organizations reduce revenue leakage before claims are submitted and
+                improving claim acceptance, efficiency, and revenue predictability.
               </p>
             </AnimatedContainer>
           </div>
@@ -1077,6 +1004,88 @@ export default function ProofPage() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* ── 2b. 100% Autonomous Claims Auditing / The Audit Direction ───────── */}
+      <section className="relative overflow-hidden bg-[#eef3fb] py-20 md:py-28 text-[#0f2350]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ backgroundImage: "repeating-linear-gradient(90deg, rgba(80,120,200,0.07) 0px, rgba(80,120,200,0.07) 1px, transparent 1px, transparent 16px)" }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
+
+          {/* Top row — heading + case target */}
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+            <AnimatedContainer className="max-w-2xl">
+              <h2 className="text-3xl md:text-[2.6rem] font-extrabold leading-[1.1] tracking-tight text-[#102a5c]">
+                100% Autonomous Claims Auditing
+              </h2>
+              <p className="mt-5 text-[15px] md:text-base leading-relaxed text-[#4a5b7d]">
+                Eliminate backlogs and statistical sampling. Deploying deep programmatic inspections
+                that deliver complete precision and lightning-fast execution speed across every single
+                claim file.
+              </p>
+            </AnimatedContainer>
+
+            <AnimatedContainer delay={0.2} className="shrink-0">
+              <div className="flex items-center gap-4 rounded-2xl border border-[#cfe0f5] bg-white px-5 py-4 shadow-[0_10px_30px_-16px_rgba(20,50,120,0.4)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0a3bd6] text-white">
+                  <CheckCircle2 size={22} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#8a9bbd]">Case target</p>
+                  <p className="text-[15px] font-bold text-[#102a5c]">ClearVision Eye Clinics</p>
+                  <p className="text-[12px] text-[#5a78c5]">1,204 Claims Analyzed</p>
+                </div>
+              </div>
+            </AnimatedContainer>
+          </div>
+
+          {/* The Audit Direction */}
+          <div className="mt-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <AnimatedContainer>
+              <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#3e7ecb]">Core Proof Engine</p>
+              <h3 className="mt-3 text-2xl md:text-[2rem] font-extrabold tracking-tight text-[#102a5c]">
+                The Audit Direction
+              </h3>
+            </AnimatedContainer>
+            <AnimatedContainer delay={0.15}>
+              <p className="max-w-md text-[14px] leading-relaxed text-[#4a5b7d]">
+                A programmatic approach that completely eliminates sampling backlogs. We deliver
+                autonomous claim processing with complete operational confidence.
+              </p>
+            </AnimatedContainer>
+          </div>
+
+          {/* 4 audit cards */}
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { tag: "Full Scope", icon: CheckCircle2, title: "100% Audited", desc: "100 percent of claims audited fully through the algorithmic gateway, rather than resting on statistically delayed sampling." },
+              { tag: "Deep Check", icon: Activity, title: "29 Checks / 6 Layers", desc: "Every claim undergoes 29 diagnostic audits automated across six clinical and billing contractual layers, processed in minutes." },
+              { tag: "High Accuracy", icon: BarChart2, title: "94% Precision", desc: "94 percent audit precision verified in clean representative reviews on medical billing adjustments." },
+              { tag: "Optimal Workflow", icon: FileText, title: "Ranked Reasoned Queue", desc: "A continuous, prioritized, clear interface list ensuring your team works the highest-value recovered claims first." },
+            ].map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <AnimatedContainer key={c.title} delay={0.1 + i * 0.08} className="h-full">
+                  <div className="group flex h-full flex-col rounded-2xl border border-[#d7e3f4] bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0a3bd6]/40 hover:shadow-[0_18px_44px_-22px_rgba(20,50,120,0.5)]">
+                    <div className="flex items-center justify-between">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eaf1fd] text-[#0a3bd6]">
+                        <Icon size={18} />
+                      </span>
+                      <span className="rounded-full border border-[#16a34a]/30 bg-[#16a34a]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-[#15803d]">
+                        {c.tag}
+                      </span>
+                    </div>
+                    <h4 className="mt-5 text-[17px] font-extrabold leading-snug text-[#102a5c]">{c.title}</h4>
+                    <p className="mt-2.5 text-[12.5px] leading-[1.65] text-[#5a6b8c]">{c.desc}</p>
+                  </div>
+                </AnimatedContainer>
+              );
+            })}
+          </div>
         </div>
       </section>
 

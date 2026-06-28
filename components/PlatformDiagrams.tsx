@@ -154,6 +154,45 @@ function ArchitectureMobile() {
   );
 }
 
+/* ── Both Directions — native bidirectional diagram ──────────────────── */
+
+function BothDirectionsLight() {
+  const side = (
+    dir: "up" | "down",
+    eyebrow: string,
+    title: string,
+    desc: string,
+    items: string[],
+  ) => (
+    <div className="flex-1 rounded-2xl border border-white/12 bg-white/[0.06] p-5 backdrop-blur">
+      <div className="flex items-center gap-2">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/12 text-white">
+          {dir === "up" ? "↑" : "↓"}
+        </span>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/60">{eyebrow}</span>
+      </div>
+      <p className="mt-3 text-[15px] font-bold text-white">{title}</p>
+      <p className="mt-1.5 text-[12px] leading-relaxed text-white/65">{desc}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {items.map((it) => (
+          <span key={it} className="rounded-md border border-white/12 bg-white/[0.05] px-2.5 py-1 text-[11px] text-white/80">{it}</span>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="flex w-full flex-col items-stretch gap-4 md:flex-row md:items-center">
+      {side("up", "Upstream", "Before the claim", "Grelin fixes the issue before submission.", ["Eligibility", "Documentation", "Coding"])}
+      <div className="flex shrink-0 flex-col items-center justify-center px-2">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 text-sm font-bold text-white">Claim</span>
+        <span className="mt-2 text-[10px] uppercase tracking-[0.16em] text-white/50">One engine</span>
+      </div>
+      {side("down", "Downstream", "After the claim", "Grelin audits the claim for accuracy and fraud.", ["Audit", "Fraud risk", "Ranked queue"])}
+    </div>
+  );
+}
+
 /* ── Tabbed hero diagram ──────────────────────────────────────────────── */
 
 /* ── Amber arc texture (matches PriorAuth card on home page) ──────────── */
@@ -191,6 +230,16 @@ const TABS = [
     Texture: () => <ArcPattern />,
     Diagram: PreBillComparisonLight,
     DiagramMobile: PreBillComparisonMobile,
+  },
+  {
+    label: "Both Directions",
+    title: "One engine, both directions",
+    subtitle: "The same intelligence prevents the bad claim and recognizes one after it is built",
+    bg: "#0B2E4A",
+    border: "rgba(255,255,255,0.08)",
+    Texture: () => <DotGrid opacity={0.16} />,
+    Diagram: BothDirectionsLight,
+    DiagramMobile: BothDirectionsLight,
   },
   {
     label: "Architecture",

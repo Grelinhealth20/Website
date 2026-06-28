@@ -258,7 +258,10 @@ function roundRect(
   ctx.closePath();
 }
 
-const GCanvas = () => {
+export const GCanvas = ({
+  showCards = true,
+  cards = CARDS_DATA,
+}: { showCards?: boolean; cards?: { label: string; desc: string }[] } = {}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -444,7 +447,7 @@ const GCanvas = () => {
         fadeOutTimer -= dt;
         if (fadeOutTimer <= 0) {
           // Switch to next card and fade in
-          autoCardIdx = (autoCardIdx + 1) % CARDS_DATA.length;
+          autoCardIdx = (autoCardIdx + 1) % cards.length;
           cardTarget = 1;
           cardHoldTimer = CARD_HOLD;
           fadeOutTimer = -1;
@@ -458,8 +461,8 @@ const GCanvas = () => {
       }
       cardAlpha += (cardTarget - cardAlpha) * 0.08;
 
-      // Hotspot dots — all 5, active one highlighted
-      hotNodes.forEach((ni, hi) => {
+      // Hotspot dots — all 5, active one highlighted (hidden when showCards is false)
+      if (showCards) hotNodes.forEach((ni, hi) => {
         const nd = gNodes[ni];
         const isActive = hi === autoCardIdx;
         const pulse = Math.sin(nodeT * 2.2 + hi * 2.1) * 0.5 + 0.5;
@@ -481,9 +484,9 @@ const GCanvas = () => {
       });
 
       // Card popup — smooth fade in/out
-      if (cardAlpha > 0.01) {
+      if (showCards && cardAlpha > 0.01) {
         const nd = gNodes[hotNodes[autoCardIdx]];
-        if (nd) drawCard(nd.x, nd.y, CARDS_DATA[autoCardIdx], cardAlpha);
+        if (nd) drawCard(nd.x, nd.y, cards[autoCardIdx], cardAlpha);
       }
     }
 
