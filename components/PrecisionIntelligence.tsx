@@ -35,7 +35,7 @@ export default function PrecisionIntelligence() {
 
   return (
     <section
-      className="relative w-full overflow-hidden px-4 py-16 sm:px-6 sm:py-24
+      className="relative w-full overflow-hidden px-4 py-12 sm:px-6 sm:py-18
         bg-[linear-gradient(225deg,#0A1F44_0%,#174EA6_38%,#3B82F6_70%,#93C5FD_100%)]"
     >
       {/* Stripe texture */}
@@ -44,7 +44,7 @@ export default function PrecisionIntelligence() {
       {/* Inner glass panel — centered, constrained */}
       <div
         className="relative mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px]
-          border border-white/20 px-5 py-10 sm:px-10 sm:py-14
+          border border-white/20 px-5 py-10 sm:px-12 sm:py-14
           shadow-[0_20px_60px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.45),inset_0_0_24px_rgba(255,255,255,0.12)]"
         style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
       >
@@ -72,8 +72,8 @@ export default function PrecisionIntelligence() {
           </p>
         </div>
 
-        {/* 4-card grid — centered, equal sizing */}
-        <div className="relative z-10 mx-auto grid max-w-[1120px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {/* 4-card grid — full width, aligned to panel, larger cards */}
+        <div className="relative z-10 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}

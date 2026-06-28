@@ -290,7 +290,7 @@ export default function ClaimIntegrityPage() {
   return (
     <main className="overflow-x-hidden bg-[#020817] font-sans text-white">
       {/* ───────────────────────── 1. HERO ───────────────────────── */}
-      <section className="relative overflow-hidden bg-[#020817] pt-32 md:pt-40">
+      <section className="relative overflow-hidden bg-[#020817] pt-28 md:pt-32">
         {/* dotted map / grid backdrop */}
         <div
           aria-hidden
@@ -353,9 +353,9 @@ export default function ClaimIntegrityPage() {
         </div>
 
         {/* Connected stakeholder panel */}
-        <FadeIn delay={0.2} className="relative z-10 mx-auto mt-16 max-w-[1120px] px-6 pb-24">
+        <FadeIn delay={0.2} className="relative z-10 mx-auto mt-16 max-w-[1000px] px-6 pb-16">
           <div
-            className="relative rounded-[28px] border border-white/10 p-6 md:p-10"
+            className="relative rounded-[28px] border border-white/10 p-5 md:p-8"
             style={{
               background: "linear-gradient(160deg,rgba(8,20,48,0.9),rgba(2,10,28,0.95))",
               boxShadow: "0 30px 90px -40px rgba(0,60,180,0.7), inset 0 1px 0 rgba(255,255,255,0.05)",
@@ -402,9 +402,9 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────────── 2. PARTNER WITH GRELIN ───────────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "linear-gradient(180deg,#dfeafe,#eef4ff 60%,#e6eeff)" }}>
+      <section className="relative overflow-hidden py-14 md:py-20" style={{ background: "linear-gradient(180deg,#dfeafe,#eef4ff 60%,#e6eeff)" }}>
         <Pinstripes color="rgba(80,120,200,0.06)" gap={13} />
-        <div className="relative z-10 mx-auto max-w-[1200px] px-6">
+        <div className="relative z-10 mx-auto max-w-[1060px] px-6">
           <FadeIn className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[38px] font-extrabold leading-[1.06] tracking-[-0.02em] text-[#16224a] md:text-[52px]">
               Partner with Grelin
@@ -415,7 +415,7 @@ export default function ClaimIntegrityPage() {
             </p>
           </FadeIn>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="mt-9 grid gap-6 lg:grid-cols-2">
             {partnerPrograms.map((p, i) => (
               <FadeIn key={p.title} delay={i * 0.06}>
                 <PartnerCard {...p} />
@@ -426,8 +426,8 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 3. A CLAIM IS RIGHT OR WRONG ───────────── */}
-      <section className="relative overflow-hidden bg-white py-20 text-[#131b2e] md:py-28">
-        <div className="mx-auto grid max-w-[1240px] items-center gap-12 px-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <section className="relative overflow-hidden bg-white py-14 text-[#131b2e] md:py-20">
+        <div className="mx-auto grid max-w-[1080px] items-center gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr]">
           <FadeIn>
             <Badge tone="light">
               <Sparkles className="h-4 w-4" />
@@ -463,7 +463,7 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 4. ONE CLAIM TRUTH (royal blue) ───────────── */}
-      <section className="relative overflow-hidden py-20 text-white md:py-28">
+      <section className="relative overflow-hidden py-14 text-white md:py-20">
         <div
           aria-hidden
           className="absolute inset-0"
@@ -473,7 +473,7 @@ export default function ClaimIntegrityPage() {
           }}
         />
         <Pinstripes color="rgba(255,255,255,0.05)" gap={13} />
-        <div className="relative z-10 mx-auto max-w-[1200px] px-6">
+        <div className="relative z-10 mx-auto max-w-[1060px] px-6">
           <FadeIn className="text-center">
             <Badge tone="ghost">The now</Badge>
             <h2 className="mx-auto mt-6 max-w-[900px] text-[34px] font-extrabold leading-[1.08] tracking-[-0.02em] md:text-[50px]">
@@ -484,7 +484,7 @@ export default function ClaimIntegrityPage() {
             </p>
           </FadeIn>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {sideCards.map((c, i) => {
               const Icon = c.icon;
               return (
@@ -508,11 +508,11 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 5. THE SHARED CHECKS (torn dark card) ───────────── */}
-      <section className="relative overflow-hidden bg-[#020817] py-20 md:py-28">
-        <div className="mx-auto max-w-[1200px] px-6">
+      <section className="relative overflow-hidden bg-[#020817] py-14 md:py-20">
+        <div className="mx-auto max-w-[1060px] px-6">
           <FadeIn>
             <div
-              className="relative px-7 py-14 md:px-16 md:py-20"
+              className="relative px-7 py-14 md:px-16 md:py-14"
               style={{
                 background: "linear-gradient(160deg,#0a1b3e 0%,#061334 55%,#04102b 100%)",
                 WebkitMaskImage: TORN_MASK,
@@ -530,7 +530,7 @@ export default function ClaimIntegrityPage() {
                   The core validations running across the platform.
                 </p>
               </div>
-              <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-3">
+              <div className="mt-9 grid gap-x-10 gap-y-8 md:grid-cols-3">
                 {sharedChecks.map((c) => {
                   const Icon = c.icon;
                   return (
@@ -552,7 +552,7 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 6. BUILT ON INFRASTRUCTURE (royal blue) ───────────── */}
-      <section className="relative overflow-hidden py-20 text-white md:py-28">
+      <section className="relative overflow-hidden py-14 text-white md:py-20">
         <div
           aria-hidden
           className="absolute inset-0"
@@ -562,7 +562,7 @@ export default function ClaimIntegrityPage() {
           }}
         />
         <Pinstripes color="rgba(255,255,255,0.045)" gap={13} />
-        <div className="relative z-10 mx-auto grid max-w-[1240px] items-center gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative z-10 mx-auto grid max-w-[1080px] items-center gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr]">
           <FadeIn>
             <Badge tone="teal">The foundation</Badge>
             <h2 className="mt-6 text-[36px] font-extrabold leading-[1.05] tracking-[-0.02em] md:text-[52px]">
@@ -635,8 +635,8 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 7. YOUR EXPERTISE — flow (white) ───────────── */}
-      <section className="relative overflow-hidden bg-white py-20 text-[#131b2e] md:py-28">
-        <div className="mx-auto max-w-[1200px] px-6">
+      <section className="relative overflow-hidden bg-white py-14 text-[#131b2e] md:py-20">
+        <div className="mx-auto max-w-[1060px] px-6">
           <FadeIn className="text-center">
             <Badge tone="light">The platform</Badge>
             <h2 className="mx-auto mt-6 max-w-[840px] text-[36px] font-extrabold leading-[1.06] tracking-[-0.02em] text-[#16224a] md:text-[50px]">
@@ -650,7 +650,7 @@ export default function ClaimIntegrityPage() {
           </FadeIn>
 
           <FadeIn delay={0.12}>
-            <div className="mt-14 rounded-[28px] border border-[#0c1d44] bg-[#040d22] p-6 md:p-10">
+            <div className="mt-10 rounded-[28px] border border-[#0c1d44] bg-[#040d22] p-5 md:p-8">
               <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_auto_1.1fr_auto_1fr]">
                 {/* Partners & experts */}
                 <FlowCard title="Partners & Experts" icon={UsersRound} tone="blue">
@@ -705,9 +705,9 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 8. COMPOUNDING EFFECT (lavender + flywheel) ───────────── */}
-      <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "linear-gradient(120deg,#b9d0f7 0%,#dce8fb 55%,#eef4fd 100%)" }}>
+      <section className="relative overflow-hidden py-14 md:py-20" style={{ background: "linear-gradient(120deg,#b9d0f7 0%,#dce8fb 55%,#eef4fd 100%)" }}>
         <Pinstripes color="rgba(80,120,200,0.07)" gap={13} />
-        <div className="relative z-10 mx-auto grid max-w-[1240px] items-center gap-12 px-6 lg:grid-cols-[1fr_1fr]">
+        <div className="relative z-10 mx-auto grid max-w-[1080px] items-center gap-10 px-6 lg:grid-cols-[1fr_1fr]">
           <FadeIn>
             <Badge tone="light">The compounding effect</Badge>
             <h2 className="mt-6 text-[36px] font-extrabold leading-[1.06] tracking-[-0.02em] text-[#16224a] md:text-[50px]">
@@ -732,8 +732,8 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 9. INTEGRATION TREE (dark) ───────────── */}
-      <section className="relative overflow-hidden bg-[#070d1c] py-20 md:py-28">
-        <div className="mx-auto max-w-[1200px] px-6">
+      <section className="relative overflow-hidden bg-[#070d1c] py-14 md:py-20">
+        <div className="mx-auto max-w-[1060px] px-6">
           <FadeIn className="text-center">
             <Badge tone="ghost">Integration</Badge>
             <h2 className="mx-auto mt-6 max-w-[900px] text-[34px] font-extrabold leading-[1.08] tracking-[-0.02em] text-white md:text-[50px]">
@@ -747,7 +747,7 @@ export default function ClaimIntegrityPage() {
           </FadeIn>
 
           <FadeIn delay={0.12}>
-            <div className="mt-14 rounded-[28px] border border-[#13234b] bg-[#040d22] p-6 md:p-10">
+            <div className="mt-10 rounded-[28px] border border-[#13234b] bg-[#040d22] p-5 md:p-8">
               {/* top node */}
               <div className="mx-auto max-w-[760px] rounded-[20px] border border-sky-400/30 bg-gradient-to-br from-[#0a3bd6]/30 to-[#06205f]/30 p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -794,7 +794,7 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 10. REGULATED (white pills) ───────────── */}
-      <section className="bg-white py-20 text-[#131b2e] md:py-24">
+      <section className="bg-white py-14 text-[#131b2e] md:py-18">
         <div className="mx-auto max-w-[1100px] px-6 text-center">
           <FadeIn>
             <h2 className="text-[34px] font-extrabold tracking-[-0.02em] text-[#16224a] md:text-[50px]">
@@ -818,7 +818,7 @@ export default function ClaimIntegrityPage() {
       </section>
 
       {/* ───────────── 11. CTA (lavender) ───────────── */}
-      <section className="relative overflow-hidden py-20 text-center md:py-28" style={{ background: "linear-gradient(90deg,#b5cef7 0%,#cfe0fb 50%,#bcd3f8 100%)" }}>
+      <section className="relative overflow-hidden py-14 text-center md:py-20" style={{ background: "linear-gradient(90deg,#b5cef7 0%,#cfe0fb 50%,#bcd3f8 100%)" }}>
         <Pinstripes color="rgba(255,255,255,0.28)" gap={12} />
         <div className="relative z-10 mx-auto max-w-[900px] px-6">
           <FadeIn>

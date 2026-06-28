@@ -168,7 +168,7 @@ export default function PlatformPage() {
     <main className="bg-brand-dark text-white">
 
       {/* ── 1. Hero — dark with center glow ────────────────────────────────── */}
-      <section className="relative flex items-center justify-center overflow-hidden px-4 md:px-16 py-20 md:py-32">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 md:px-16 pt-28 pb-16 md:pt-36 md:pb-24">
         {/* Center glow */}
         <div
           aria-hidden
@@ -185,19 +185,19 @@ export default function PlatformPage() {
           <div className="w-[600px] h-[600px] rounded-full bg-brand-blue opacity-[0.08] blur-[120px]" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center gap-16">
+        <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-center gap-12">
 
           {/* Text block — narrower */}
           <div className="w-full text-center flex flex-col gap-6" style={{ maxWidth: 760 }}>
             <AnimatedContainer className="flex flex-col items-center gap-6">
               <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-balance">
-                The Intelligence Layer for Pre-Bill Revenue Integrity
+                One engine for Claim Integrity. Before the claim, and after.
               </h1>
             </AnimatedContainer>
 
             <AnimatedContainer delay={0.2}>
               <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-                Healthcare lacks pre-claim validation where most errors happen. Grelin users AI to catch and fix issues before claims are submitted, reducing denials and revenue loss.
+                Healthcare has no validation at the point where most errors are created. Grelin uses AI to read the claim, apply payer rules, and act. Upstream it fixes the issue before submission. Downstream it audits the claim for accuracy and fraud.
               </p>
             </AnimatedContainer>
           </div>
@@ -212,7 +212,7 @@ export default function PlatformPage() {
       </section>
       <section className="bg-white relative flex items-center justify-center overflow-hidden px-4 md:px-16 py-12 md:py-24">
                   {/* Diagram — full width of max-w-5xl */}
-          <AnimatedContainer delay={0.5} className="w-full max-w-5xl">
+          <AnimatedContainer delay={0.5} className="w-full max-w-4xl">
             <TabbedPlatformDiagram />
           </AnimatedContainer>
       </section>
@@ -248,7 +248,7 @@ export default function PlatformPage() {
 
             <AnimatedContainer delay={0.1}>
               <div className="border border-white/10 bg-[#f4f4f5] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)]" style={{borderRadius: "20px 0 0 20px"}}>
-              <img src={cardImg1.src} alt="" className="h-[160px] sm:h-[200px] w-full rounded-[10px] bg-[#d4d4d8] object-cover"/>
+              <img src={cardImg1.src} alt="" className="h-[130px] sm:h-[160px] w-full rounded-[10px] bg-[#d4d4d8] object-cover"/>
                   <div className="pt-5">
 
                     <h3 className="text-gray-900 text-[18px] font-bold">What we analyze</h3>
@@ -261,7 +261,7 @@ export default function PlatformPage() {
 
             <AnimatedContainer delay={0.2}>
               <div className="border border-white/10 bg-[#f4f4f5] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
-              <img src={cardImg2.src} alt="" className="h-[160px] sm:h-[200px] w-full rounded-[10px] bg-[#d4d4d8] object-cover"/>
+              <img src={cardImg2.src} alt="" className="h-[130px] sm:h-[160px] w-full rounded-[10px] bg-[#d4d4d8] object-cover"/>
 
                   <div className="pt-5">
 
@@ -275,7 +275,7 @@ export default function PlatformPage() {
 
             <AnimatedContainer delay={0.3}>
               <div className="rounded-[22px] border border-white/10 bg-[#f4f4f5] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)]" style={{borderRadius: "0 20px 20px 0"}}>
-              <img src={cardImg3.src} alt="" className="h-[160px] sm:h-[200px] w-full rounded-[10px] bg-[#d4d4d8] object-cover" />
+              <img src={cardImg3.src} alt="" className="h-[130px] sm:h-[160px] w-full rounded-[10px] bg-[#d4d4d8] object-cover" />
 
                   <div className="pt-5">
                     <h3 className="text-gray-900 text-[18px] font-bold">Upstream resolution</h3>
@@ -291,7 +291,7 @@ export default function PlatformPage() {
       </div>
 
       {/* ── 3. Capabilities — dark, centered text layout ─────────────────────── */}
-<section className="bg-[#f5f5f5] py-20 sm:py-24 lg:py-32 overflow-hidden">
+<section className="bg-[#f5f5f5] py-16 sm:py-20 lg:py-24 overflow-hidden">
 
   <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
 
@@ -326,7 +326,7 @@ export default function PlatformPage() {
         },
         {
           title: "Documentation Intelligence",
-          desc: "Analyzes clinical documentation to ensure services are accurately supported, properly documented, and compliant with payer-specific requirements, helping reduce errors, avoid deficiencies, and limit downstream claim risk.",
+          desc: "Analyzes clinical documentation to ensure services are accurately supported, properly documented, and compliant with payer-specific requirements, helping reduce denials, coding discrepancies, audit risks, and reimbursement delays.",
           reverse: true,
           img: CapImg2
 
@@ -340,7 +340,7 @@ export default function PlatformPage() {
         },
         {
           title: "Payer Policy Alignment",
-          desc: "Continuously monitors evolving payer requirements to ensure claims align with policy expectations before submission, helping reduce denials, improve compliance, minimize reimbursement delays, and strengthen revenue consistency.",
+          desc: "Continuously monitors evolving payer requirements to ensure claims align with policy expectations before submission, helping reduce denials, improve compliance, minimize reimbursement delays, and strengthen overall claim accuracy.",
           reverse: true,
           img: CapImg4
 
@@ -403,9 +403,9 @@ export default function PlatformPage() {
               src={item.img.src}
               alt="Claim card image"
               className="                 
-                   h-[150px]
-                  sm:h-[140px]
-                  lg:h-[200px]
+                   h-[120px]
+                  sm:h-[120px]
+                  lg:h-[160px]
                   w-full
                   rounded-[20px]
                   object-cover
@@ -425,6 +425,71 @@ export default function PlatformPage() {
   </div>
 
 </section>
+
+      {/* ── 3b. Claim Audit and Integrity Review (downstream) ───────────────── */}
+      <section className="relative overflow-hidden bg-brand-dark px-4 md:px-8 lg:px-16 py-16 md:py-24 border-t border-white/5">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[900px] -translate-x-1/2 rounded-full bg-[#12395d]/35 blur-[120px]"
+        />
+        <div className="relative z-10 mx-auto max-w-7xl flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
+          {/* Left — text */}
+          <div className="lg:w-[44%]">
+            <AnimatedContainer>
+              <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.18em] text-[#6a97e8]">
+                Downstream
+              </span>
+            </AnimatedContainer>
+            <AnimatedContainer delay={0.1}>
+              <h2 className="mt-4 text-white text-3xl md:text-4xl lg:text-[2.8rem] font-extrabold leading-tight tracking-tight text-balance">
+                Claim Audit and Integrity Review.
+              </h2>
+            </AnimatedContainer>
+            <AnimatedContainer delay={0.2}>
+              <p className="mt-6 text-slate-400 text-sm md:text-base leading-relaxed">
+                Runs a submitted claim through layered audit checks, surfaces accuracy and fraud risk,
+                and returns a ranked, reasoned queue. The same intelligence that prevents the bad claim
+                recognizes one after it is built.
+              </p>
+            </AnimatedContainer>
+          </div>
+
+          {/* Right — ranked reasoned queue panel */}
+          <AnimatedContainer delay={0.2} className="lg:w-[56%]">
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#04102b] shadow-[0_30px_80px_-45px_rgba(0,80,220,0.7)]">
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-5 py-3.5">
+                <p className="text-[13px] font-bold text-white">Ranked Reasoned Queue</p>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#4ade80]/30 bg-[#4ade80]/10 px-2.5 py-1 text-[10px] font-semibold text-[#4ade80]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#4ade80]" /> Live audit
+                </span>
+              </div>
+              <div className="divide-y divide-white/[0.06]">
+                {[
+                  { id: "CLM-8192", svc: "Coverage conflict — secondary policy", risk: 94, tone: "#e24b4a" },
+                  { id: "CLM-7703", svc: "Coding mismatch — modifier bundle", risk: 88, tone: "#f59e0b" },
+                  { id: "CLM-9021", svc: "Policy alignment — prior auth token", risk: 78, tone: "#f59e0b" },
+                  { id: "CLM-5521", svc: "Documentation — measurements present", risk: 12, tone: "#4ade80" },
+                ].map((r) => (
+                  <div key={r.id} className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.04]">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: r.tone }} />
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-[13px] font-semibold text-white">{r.svc}</p>
+                      <p className="text-[11px] text-slate-500">{r.id} · layered audit · reasoned finding</p>
+                    </div>
+                    <span className="shrink-0 rounded-md px-2.5 py-1 text-[12px] font-bold tabular-nums" style={{ background: `${r.tone}1f`, color: r.tone }}>
+                      {r.risk}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center justify-between border-t border-white/10 bg-white/[0.03] px-5 py-3.5">
+                <p className="text-[11px] text-slate-400">29 checks · 6 layers · accuracy &amp; fraud risk</p>
+                <span className="text-[12px] font-bold text-[#6aa6ff]">View findings →</span>
+              </div>
+            </div>
+          </AnimatedContainer>
+        </div>
+      </section>
 
       {/* ── 4. Integrations — dark, text left + diagram right ──────────────── */}
       <section className="bg-brand-dark px-4 md:px-8 lg:px-16 py-14 md:py-24 lg:py-32 border-t border-white/5">
@@ -458,7 +523,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── 5. Security — white expanding ──────────────────────────────────── */}
- <section className="flex items-center min-h-[90vh] justify-center p-6 relative w-full overflow-hidden
+ <section className="flex items-center justify-center px-4 py-16 md:py-24 relative w-full overflow-hidden
         bg-[linear-gradient(180deg,#FFFFFF_0%,#F4F8FF_40%,#DCEBFF_72%,#B8D2FF_100%)]">
 
           {/* Stripe pattern */}
@@ -579,9 +644,9 @@ export default function PlatformPage() {
                   viewport={{ once: true }}
                   className="
                     flex-shrink-0
-                    w-[260px]
-                    sm:w-[290px]
-                    lg:w-[310px]
+                    w-[210px]
+                    sm:w-[235px]
+                    lg:w-[250px]
                   "
                 >
 
@@ -602,9 +667,9 @@ export default function PlatformPage() {
                     src={item.img.src}
                     alt="End section platform card image"
                       className="
-                        h-[190px]
-                        sm:h-[210px]
-                        lg:h-[250px]
+                        h-[150px]
+                        sm:h-[170px]
+                        lg:h-[200px]
                         w-full
                         rounded-[12px]
                         bg-[#d3d3d3]
